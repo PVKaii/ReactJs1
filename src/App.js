@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div>
-      <h1>hello word</h1>
+    <div className="App">
+      <button className='btn btn-primary'>OK</button>
     </div>
   );
 }
