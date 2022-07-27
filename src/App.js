@@ -3,8 +3,6 @@ import Menu from './components/Menu/Menu';
 import routers from './routes/routes';
 import { Routes,Route, BrowserRouter as Router } from 'react-router-dom';
 import { Component } from 'react';
-import HomePage from './pages/HomePage';
-
 
 class App extends Component{
   render(){
