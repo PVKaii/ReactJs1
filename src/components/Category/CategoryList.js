@@ -1,6 +1,6 @@
 import { Component } from "react";
 
-class FoodList extends Component{
+class CategoryList extends Component{
     render(){
         return(
             <div>
@@ -9,8 +9,6 @@ class FoodList extends Component{
               <tr>
                 <th scope="col"></th>
                 <th scope="col">name</th>
-                <th scope="col">quantity</th>
-                <th scope="col">available</th>
               </tr>
             </thead>
 
@@ -23,4 +21,4 @@ class FoodList extends Component{
     }
 }
 
-export default FoodList
+export default CategoryList

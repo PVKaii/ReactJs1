@@ -11,7 +11,9 @@ class FoodPage extends Component{
                     </h2>
                 </header>
                 <body>
-                    <Food/>
+                    <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <Food />
+                    </div>
                 </body>
             </div>
         )

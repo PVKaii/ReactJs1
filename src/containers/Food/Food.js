@@ -1,36 +1,21 @@
 import { Component } from "react";
 import FoodItem from "../../components/Food/FoodItem";
 import FoodList from "../../components/Food/FoodList";
+import { connect } from 'react-redux';
 
 class Food extends Component{
     constructor(props){
         super(props);
-        this.state={
-            foods : [
-                {
-                    name : "food 1",
-                    quantity:10,
-                    available:true
-                },
-                {
-                    name : "food 2",
-                    quantity:10,
-                    available:true
-                },
-                {
-                    name : "food 3",
-                    quantity:10,
-                    available:false
-                }
-            ]
-        }
     }
 
+
     render(){
+        var {foods} = this.props;
+        console.log("123 " +foods)
         return(
             <div>
                 <FoodList>
-                    {this.loadFoodItems(this.state.foods)}
+                    {this.loadFoodItems(foods)}
                 </FoodList>
             </div>
 
@@ -39,9 +24,22 @@ class Food extends Component{
 
     loadFoodItems(foods){
         return foods.map((food,index)=>(
-            <FoodItem key={index} food={food} index={index}/>
+            <FoodItem key={index} food={food} index={index} onDelete={this.onDelete}/>
         ))
+    }
+
+
+    onDelete = (id) => {
+        this.props.state.foods=this.props.state.foods.filter(food=>food.id!==id);
     }
 }
 
-export default Food
+
+const mapStateToFoods = state =>{
+    console.log("state " +state)
+    return {
+        foods : state.foodReducer
+    }
+}
+
+export default connect(mapStateToFoods,null)(Food)

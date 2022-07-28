@@ -1,0 +1,8 @@
+export const FETCH_fOODS="FETCH_FOODS";
+export const ADD_fOOD="ADD_FOOD";
+export const EDIT_fOOD="EDIT_FOOD";
+export const DELETE_fOOD="DELETE_FOOD";
+export const FETCH_CATEGORIES="FETCH_CATEGORIES";
+export const ADD_CATEGORIE="ADD_CATEGORIE";
+export const EDIT_CATEGORY="EDIT_CATEGORY";
+export const DELETE_CATEGORY="DELETE_CATEGORY";
