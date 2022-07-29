@@ -2,10 +2,11 @@ import { Component } from "react";
 import FoodItem from "../../components/Food/FoodItem";
 import FoodList from "../../components/Food/FoodList";
 import { connect } from 'react-redux';
-
+import { actDeleteFood, actFetchFoods } from "../../actions/FoodActions";
+import {  Link } from 'react-router-dom';
 class Food extends Component{
-    constructor(props){
-        super(props);
+    componentDidMount(){
+        this.props.fetchAllFoods();
     }
 
 
@@ -14,6 +15,7 @@ class Food extends Component{
         console.log("123 " +foods)
         return(
             <div>
+            <Link to={`./add`} className="btn btn-success col-2" style={{marginBottom:"10px"}}>Add</Link>
                 <FoodList>
                     {this.loadFoodItems(foods)}
                 </FoodList>
@@ -30,16 +32,27 @@ class Food extends Component{
 
 
     onDelete = (id) => {
-        this.props.state.foods=this.props.state.foods.filter(food=>food.id!==id);
+        this.props.deleteFood(id)
     }
 }
 
 
-const mapStateToFoods = state =>{
+const mapStateToProps = state =>{
     console.log("state " +state)
     return {
         foods : state.foodReducer
     }
 }
 
-export default connect(mapStateToFoods,null)(Food)
+const mapDispatchtoProps = (dispatch)=>{
+    return {
+        fetchAllFoods : ()=>{
+            dispatch(actFetchFoods())
+        },
+        deleteFood : (id)=>{
+            dispatch(actDeleteFood(id))
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchtoProps)(Food)

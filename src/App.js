@@ -26,10 +26,9 @@ class App extends Component{
     var index=0;
     var routerList=[]
     routers.forEach(element => {
-      index=index+1;
       var rout= element.map((route)=>{
         return(
-          <Route key={index} path={route.path} exact={route.exact} element={<route.page/>}  />
+          <Route key={++index} path={route.path} exact={route.exact} element={<route.page/>}  />
         )
         })
         console.log(rout);

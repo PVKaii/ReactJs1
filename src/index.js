@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { createStore ,combineReducers } from 'redux'
 import { Provider } from 'react-redux';
-import foodReducer from './reducers/foodReducer';
+import foodReducer from './reducers/FoodReducer';
 
 
 

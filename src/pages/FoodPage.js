@@ -10,11 +10,9 @@ class FoodPage extends Component{
                         Food Manager
                     </h2>
                 </header>
-                <body>
                     <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
                         <Food />
                     </div>
-                </body>
             </div>
         )
     }
