@@ -2,7 +2,7 @@ import { Component } from "react";
 import FoodItem from "../../components/Food/FoodItem";
 import FoodList from "../../components/Food/FoodList";
 import { connect } from 'react-redux';
-import { actDeleteFood, actFetchFoods } from "../../actions/FoodActions";
+import { actDeleteFood, actFetchFoods } from "../../actions/FoodTodos";
 import {  Link } from 'react-router-dom';
 class Food extends Component{
     componentDidMount(){

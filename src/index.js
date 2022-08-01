@@ -6,11 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import { createStore ,combineReducers } from 'redux'
 import { Provider } from 'react-redux';
 import foodReducer from './reducers/FoodReducer';
+import foodActionReducer from './reducers/FoodActionReducer';
 
 
 
 const store =createStore(combineReducers({ 
-  foodReducer
+  foodReducer,
+  foodActionReducer  
 }))
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

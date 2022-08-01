@@ -1,11 +1,9 @@
 import { Component } from "react";
-import {  Link } from 'react-router-dom';
 
 class FoodForm extends Component{
     render (){
         var {food} =this.props;
-        var availableStt= food.available ? true :false;
-        // var availableStt=true;
+        var availableStt= food.available;
         return(
             <div>
                 <form onSubmit={this.onSave}>
@@ -14,9 +12,10 @@ class FoodForm extends Component{
                         <input
                             type="text"
                             className="form-control col-5"
-                            name="txtName"
-                            // value={food.name}
-                            // onChange={this.onChange}
+                            name="name"
+                            // defaultValue={food.name}
+                            value={food.name}
+                            onChange={(e)=>this.props.onChange(e)}
                         />
                     </div>
                     {/* <div className="form-group">
@@ -34,9 +33,10 @@ class FoodForm extends Component{
                         <input
                             type="number"
                             className="form-control col-2"
-                            name="txtQuantity"
-                            // value={food.quantity}
-                            // onChange={this.onChange}
+                            name="quantity"
+                            value={food.quantity}
+                            // defaultValue={food.quantity}
+                            onChange={(e)=>this.props.onChange(e)}
                         />
                     </div>
                     <div className="form-group">
@@ -46,18 +46,20 @@ class FoodForm extends Component{
                         <label>
                             <input
                                 type="checkbox"
-                                name="chkbAvailable"
+                                name="available"
                                 value={availableStt}
-                                onChange={this.onChange}
-                                // checked={availableStt}
+                                // defaultValue={availableStt}
+                                onChange={(e)=>this.props.onChange(e)}
+                                checked={availableStt}
+                                // defaultChecked={availableStt}
                             />
                             Còn Hàng
                         </label>
                     </div>
-                    <Link to="/product-list" className="btn btn-danger mr-10">
+                    <button className="btn btn-danger mr-10" onClick={(e)=>this.props.onBack(e)}>
                         Trở Lại
-                    </Link>
-                    <button type="submit" className="btn btn-primary">Lưu Lại</button>
+                    </button>
+                    <button type="submit" className="btn btn-primary" onClick={(e)=>this.props.onSave(e)}>Lưu Lại</button>
                 </form>
             </div>
         )
