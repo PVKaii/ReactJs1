@@ -3,17 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { createStore ,combineReducers } from 'redux'
+import { createStore ,combineReducers,applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import foodReducer from './reducers/FoodReducer';
 import foodActionReducer from './reducers/FoodActionReducer';
-
+import thunk from 'redux-thunk';
+import authReducer from './reducers/AuthReducer';
 
 
 const store =createStore(combineReducers({ 
   foodReducer,
-  foodActionReducer  
-}))
+  foodActionReducer,
+  authReducer
+}),
+applyMiddleware(thunk))
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>

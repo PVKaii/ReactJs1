@@ -4,7 +4,9 @@ const homeRoutes=[
     {
         path : "/",
         exact : true,
-        page : HomePage
+        page : HomePage,
+        authenticate:false,
+        role:[],
     }
 ]
 

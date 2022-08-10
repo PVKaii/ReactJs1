@@ -19,10 +19,9 @@ const FoodActionPage =()=>{
 
     let {id} = useParams();
     let navigate = useNavigate()
-
     return(
             <div>
-                <FoodAction  id={id} navigate={navigate}/>
+                <FoodAction id={id} navigate={navigate}/>
             </div>
     )
 }

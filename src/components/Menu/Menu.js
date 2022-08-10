@@ -1,7 +1,8 @@
 import { Component } from "react";
 import {  Link } from 'react-router-dom';
+import { checkRole, ROLE_ADMIN } from "../../contants/RoleContants";
 
-const menus=[
+const adminMenus=[
     {
         name : "Trang chủ",
         to :"/",
@@ -13,8 +14,39 @@ const menus=[
     {
         name : "Loại",
         to :"/category",
+    },
+]
+
+const memberMenus=[
+    {
+        name : "Trang chủ",
+        to :"/",
+    },
+    {
+        name : "Món ăn",
+        to :"/food",
     }
 ]
+
+const unauthorizeMenus = [
+    {
+        name : "Đăng nhập",
+        to :"/login",
+    },
+    {
+        name : "Đăng ký",
+        to :"/register",
+    }
+]
+
+
+const authorizeMenus = [
+    {
+        name : "Đăng xuất",
+        to :"/logout",
+    }
+]
+
 
 class Menu extends Component{
     render(){
@@ -26,7 +58,15 @@ class Menu extends Component{
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
-                {this.showMenus(menus)}
+                {
+                    this.authorizeShowMenus()
+                }
+              </ul>
+              <ul className="navbar-nav ml-auto">
+                {
+                    localStorage.getItem("user") ? this.showMenus(authorizeMenus): this.showMenus(unauthorizeMenus)
+                }
+
               </ul>
             </div>
           </nav>
@@ -43,6 +83,16 @@ class Menu extends Component{
                 </li>
             ))
         )
+    }
+
+    authorizeShowMenus=()=>{
+        if(localStorage.getItem("user")===null){
+           return this.showMenus(memberMenus)
+        }
+        else{
+            if(checkRole(ROLE_ADMIN)) return this.showMenus(adminMenus)
+            else return this.showMenus(memberMenus)
+        }
     }
 }
 
